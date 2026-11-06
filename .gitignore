@@ -1,0 +1,19 @@
+# Build output
+*.exe
+*.pdb
+dist/
+bin/
+obj/
+
+# Runtime and local config
+*.log
+WordNote.ini
+
+# Local development / scratch material
+_shots/
+_dev/
+.vs/
+*.lnk
+
+# Distribution archives (published as Release assets, not committed)
+*.zip
