@@ -1,0 +1,109 @@
+WordNote 一键安装包 —— 安装说明
+================================================================
+
+【安装（3 步）】
+
+  1. 把整个「WordNote-安装包」文件夹解压到任意位置
+     （不用管理员权限，装到当前用户目录，不写系统目录）
+
+  2. 双击  一键安装.cmd
+
+  3. 看到「安装完成」后，打开你的 Word 笔记文档，
+     按一次  Ctrl+Alt+S  框选视频区域（只需这一次）
+
+之后就可以正常记笔记了：Ctrl+Alt+S 秒截进 Word，Ctrl+Alt+N 弹速记框。
+
+
+【装到哪里】
+
+  %LOCALAPPDATA%\WordNote
+  一般是：C:\Users\<你的用户名>\AppData\Local\WordNote
+
+  同时会创建：桌面快捷方式 + 开始菜单快捷方式
+  配置文件 WordNote.ini 就在这个目录里
+
+
+【热键】
+
+  Ctrl+Alt+S          截图 → 插入 Word 光标处 → 自动换行
+                      （第一次框选区域，之后秒截记住的那块）
+  Ctrl+Alt+N          速记框：打字回车 → 写进 Word → 焦点回到视频
+  Ctrl+Alt+Shift+S    重新框选秒截区域
+  Ctrl+Alt+Space      播放 / 暂停
+  Ctrl+Alt+W          Word ↔ 视频 窗口来回切
+  Ctrl+Alt+G          开 / 关自动插入
+  托盘图标双击        等同按一次 Ctrl+Alt+S
+  托盘右键            现在截一张 / 重新框选 / 打开配置 / 速记框外观 / 退出
+
+  热键冲突就改 WordNote.ini，改完退出程序再打开生效。
+
+
+【开机自启（可选，默认不开）】
+
+  想让它开机就在托盘里：
+    双击  启用开机自启.cmd
+  想取消：
+    双击  停用开机自启.cmd
+
+
+【升级】
+
+  直接再运行一次  一键安装.cmd  即可。
+  程序文件会覆盖成新版，你的 WordNote.ini 会被保留
+  （安装时会提示「检测到已有配置，保留原 WordNote.ini」）。
+
+
+【卸载】
+
+  双击  卸载.cmd
+  会结束进程、删掉桌面/开始菜单/启动项快捷方式；
+  然后问你要不要保留 WordNote.ini：
+    回车 或 y  → 保留配置（以后重装还在）
+    n          → 配置和整个安装目录一起删除
+
+
+【常见问题】
+
+  · 提示「未检测到 .NET Framework 4.x」
+    Win10/11 自带，一般不会出现。真遇到就装 .NET Framework 4.8：
+    https://dotnet.microsoft.com/download/dotnet-framework/net48
+
+  · 按热键没反应
+    看 %LOCALAPPDATA%\WordNote\WordNote.log，最常见是热键被别的软件占了
+    （日志里 -> False），改 ini 换一个组合。
+
+  · 提示「插入失败：Word 没打开」
+    先把 Word 开好，并且里面要有打开的文档。
+
+  · 截图有条纹/黑块
+    系统抓屏抓到了 GPU 合成中的画面。用 Ctrl+Alt+S（它会先收起速记框再抓），
+    或先 Esc 关掉速记框再按 PrintScreen。
+
+  · 别同时开两份
+    两个实例会抢同一批热键，后开的那个全部注册失败。
+    安装脚本已经会在安装前自动结束旧实例。
+
+  · 360 / 火绒 之类拦了批处理
+    允许运行即可；本安装包只做「复制文件 + 建快捷方式」，不写注册表、
+    不联网、不请求管理员权限。若是被拦截导致装不上，
+    也可以手动把 payload\WordNote.exe 复制到
+    %LOCALAPPDATA%\WordNote\ 然后双击运行。
+
+
+【包内文件说明】
+
+  一键安装.cmd        安装（可重复运行，用于升级）
+  卸载.cmd            卸载
+  启用开机自启.cmd    把快捷方式放进启动文件夹
+  停用开机自启.cmd    移除启动项
+  README.md           程序本身的完整说明（热键、外观、配置项全在这）
+  payload\
+    WordNote.exe      主程序（.NET Framework 4.0 编译，免安装运行）
+    wordnote.ico      图标
+    WordNote.ini      默认配置（仅首次安装时写入）
+  tools\
+    shortcut.vbs      建快捷方式
+    unshortcut.vbs    删快捷方式
+    startup.vbs       开机自启开关
+
+================================================================

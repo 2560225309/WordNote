@@ -1,0 +1,13 @@
+# 统一换行符：源码与文档用 LF，Windows 脚本保持 CRLF，二进制不转换
+* text=auto
+
+*.cs    text eol=lf
+*.md    text eol=lf
+*.ini   text eol=lf
+*.cmd   text eol=crlf
+*.vbs   text eol=crlf
+*.txt   text eol=crlf
+
+*.ico   binary
+*.png   binary
+*.exe   binary
