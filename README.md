@@ -26,7 +26,7 @@ WordNote 是一个常驻 Windows 托盘的小工具：用全局热键把屏幕�
 
 ### 方式一：使用安装包
 
-从 [Releases](../../releases) 下载 `WordNote-一键安装包.zip`，解压到任意位置。
+从 [Releases](../../releases) 下载 `WordNote-v1.0.0-installer.zip`，解压到任意位置。
 
 1. 解压后会看到安装包文件夹。
 2. 双击 `一键安装.cmd`。
